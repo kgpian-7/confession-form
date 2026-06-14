@@ -4,8 +4,30 @@
 <head>
 
 <title>Confession Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+    
+    .heart{
+    position:absolute;
+    font-size:30px;
+    animation:float 6s infinite linear;
+}
+
+.h1{left:10%;top:100%;}
+.h2{left:50%;top:100%;animation-delay:2s;}
+.h3{left:80%;top:100%;animation-delay:4s;}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
 
 *{
     margin:0;
@@ -213,12 +235,23 @@ h1{
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
+.notice{
+    background:rgba(255,255,255,0.15);
+    color:white;
+    text-align:center;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
 
 </style>
 
 </head>
 
 <body>
+    <div class="heart h1">❤️</div>
+<div class="heart h2">❤️</div>
+<div class="heart h3">❤️</div>
 
 <div class="box">
 

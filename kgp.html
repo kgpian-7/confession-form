@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Confession Form</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    overflow:hidden;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:#ff4ecd;
+    border-radius:50%;
+    top:-100px;
+    left:-100px;
+    filter:blur(120px);
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:#00f2fe;
+    border-radius:50%;
+    bottom:-120px;
+    right:-120px;
+    filter:blur(120px);
+}
+
+.box{
+    width:500px;
+    padding:35px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    color:white;
+    animation:fadeIn 1s ease;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:40px;
+    letter-spacing:1px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.2);
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#e5e5e5;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    background:rgba(255,255,255,0.3);
+    transform:scale(1.02);
+}
+
+select option{
+    color:black;
+}
+
+textarea{
+    resize:none;
+    height:120px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#ff4ecd,#7f5cff);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(255,78,205,0.5);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.subtitle{
+    text-align:center;
+    color:#f1f1f1;
+    margin-top:-10px;
+    margin-bottom:20px;
+    font-size:15px;
+}
+
+.notice{
+    background:rgba(255,255,255,0.15);
+    padding:12px;
+    border-radius:12px;
+    text-align:center;
+    color:white;
+    margin-bottom:20px;
+    border:1px solid rgba(255,255,255,0.2);
+    animation:pulse 2s infinite;
+}
+
+.box{
+    position:relative;
+    overflow:hidden;
+}
+
+.box::before{
+    content:"";
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:rgba(255,255,255,0.1);
+    border-radius:50%;
+    top:-100px;
+    right:-100px;
+}
+
+.box::after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:rgba(255,255,255,0.08);
+    border-radius:50%;
+    bottom:-80px;
+    left:-80px;
+}
+
+button{
+    background:linear-gradient(45deg,#ff4ecd,#7f5cff,#00d4ff);
+    background-size:300% 300%;
+    animation:gradientMove 4s ease infinite;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+button:hover{
+    transform:translateY(-4px) scale(1.02);
+}
+
+h1{
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px rgba(255,255,255,0.4);
+    }
+    to{
+        text-shadow:0 0 25px rgba(255,255,255,1);
+    }
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.03);}
+    100%{transform:scale(1);}
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>💌 Anonymous Confession Portal</h1>
+<p class="subtitle">Share your thoughts anonymously</p>
+<div class="notice">
+🔒 Your identity remains completely anonymous
+</div>
+<form id="form">
+
+<input
+type="text"
+name="to"
+placeholder="To"
+required>
+
+<select name="year" required>
+<option value="">Select Year</option>
+<option>1st Year</option>
+<option>2nd Year</option>
+<option>3rd Year</option>
+<option>4th Year</option>
+</select>
+
+<input
+type="text"
+name="department"
+placeholder="Department"
+required>
+
+<textarea
+name="confession"
+placeholder="Write your confession"
+required>
+</textarea>
+
+<button type="submit">
+Submit
+</button>
+
+
+
+</form>
+
+</div>
+
+<script>
+const form = document.getElementById("form");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    try {
+
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbzc35f_4BXCSPNJiUy7l6Tj3oPtoSv9IbTEKYhpcoI6OkVIGv1jn-KctU2Fu0imjLQi/exec",
+            {
+                method: "POST",
+                body: data
+            }
+        );
+
+        window.location.href = "thankyou.html";
+
+    } catch (error) {
+
+        alert("Submission Failed!");
+
+    }
+
+});
+</script>
+
+</body>
+
+</html>

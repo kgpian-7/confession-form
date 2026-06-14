@@ -301,29 +301,21 @@ Submit
 <script>
 const form = document.getElementById("form");
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", (e) => {
 
     e.preventDefault();
 
     const data = new FormData(form);
 
-    try {
+    fetch(
+        "https://script.google.com/macros/s/AKfycbzc35f_4BXCSPNJiUy7l6Tj3oPtoSv9IbTEKYhpcoI6OkVIGv1jn-KctU2Fu0imjLQi/exec",
+        {
+            method: "POST",
+            body: data
+        }
+    );
 
-        await fetch(
-            "https://script.google.com/macros/s/AKfycbzc35f_4BXCSPNJiUy7l6Tj3oPtoSv9IbTEKYhpcoI6OkVIGv1jn-KctU2Fu0imjLQi/exec",
-            {
-                method: "POST",
-                body: data
-            }
-        );
-
-        window.location.href = "thankyou.html";
-
-    } catch (error) {
-
-        alert("Submission Failed!");
-
-    }
+    window.location.href = "thankyou.html";
 
 });
 </script>
